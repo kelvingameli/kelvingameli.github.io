@@ -750,79 +750,176 @@
           <p class="font-mono text-xs text-on-surface-variant mt-4 uppercase tracking-widest">Building credentials for research &amp; data-driven medicine</p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
+        <!-- Certificate vault: duplicate a tile per certificate -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
 
-          <article class="module-card glass p-8 rounded-2xl">
-            <div class="flex items-center gap-4 mb-8">
-              <svg class="w-6 h-6 text-accent-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <div class="glass p-6 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <svg class="w-5 h-5 text-accent-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
               </svg>
-              <h3 class="font-display text-xl font-bold">Certifications &amp; Courses</h3>
+              <span class="shrink-0 font-mono text-[9px] text-accent-cyan bg-accent-cyan/5 border border-accent-cyan/20 px-3 py-1 rounded-full uppercase tracking-widest">Currently Pursuing</span>
             </div>
-            <ul class="space-y-6">
-              <li class="flex items-start justify-between gap-4">
-                <div>
-                  <span class="block font-bold text-sm mb-1">Applied Data Science</span>
-                  <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest">WorldQuant University</span>
-                </div>
-                <span class="shrink-0 font-mono text-[9px] text-secondary bg-secondary/10 border border-secondary/20 px-3 py-1 rounded-full uppercase tracking-widest">Currently Pursuing</span>
-              </li>
-              <li class="flex items-start justify-between gap-4">
-                <div>
-                  <span class="block font-bold text-sm mb-1">Python Programming</span>
-                  <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest">Online Coursework</span>
-                </div>
-                <span class="shrink-0 font-mono text-[9px] text-secondary bg-secondary/10 border border-secondary/20 px-3 py-1 rounded-full uppercase tracking-widest">Currently Pursuing</span>
-              </li>
-              <li class="flex items-start justify-between gap-4">
-                <div>
-                  <span class="block font-bold text-sm mb-1">Statistical Computing</span>
-                  <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest">Self-Directed Study</span>
-                </div>
-                <span class="shrink-0 font-mono text-[9px] text-accent-cyan/60 bg-accent-cyan/5 border border-accent-cyan/20 px-3 py-1 rounded-full uppercase tracking-widest">Ongoing</span>
-              </li>
-              <li class="flex items-start justify-between gap-4">
-                <div>
-                  <span class="block font-bold text-sm mb-1">Research Methodology</span>
-                  <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest">Self-Directed Study</span>
-                </div>
-                <span class="shrink-0 font-mono text-[9px] text-accent-cyan/60 bg-accent-cyan/5 border border-accent-cyan/20 px-3 py-1 rounded-full uppercase tracking-widest">Ongoing</span>
-              </li>
-            </ul>
-          </article>
+            <h4 class="font-display text-sm font-bold mb-1">Applied Data Science</h4>
+            <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest block">WorldQuant University</span>
+          </div>
 
-          <article class="module-card glass p-8 rounded-2xl">
-            <div class="flex items-center gap-4 mb-8">
-              <svg class="w-6 h-6 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+          <div class="glass p-6 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <svg class="w-5 h-5 text-accent-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
               </svg>
-              <h3 class="font-display text-xl font-bold">Currently Exploring</h3>
+              <span class="shrink-0 font-mono text-[9px] text-accent-cyan bg-accent-cyan/5 border border-accent-cyan/20 px-3 py-1 rounded-full uppercase tracking-widest">Currently Pursuing</span>
             </div>
-            <div class="space-y-4">
-              <div class="glass px-4 py-3 rounded-xl border-white/5 flex items-center gap-4">
-                <span class="w-2 h-2 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>
-                <span class="text-sm">Cardiovascular Genetics</span>
-              </div>
-              <div class="glass px-4 py-3 rounded-xl border-white/5 flex items-center gap-4">
-                <span class="w-2 h-2 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>
-                <span class="text-sm">Biomedical Data Science</span>
-              </div>
-              <div class="glass px-4 py-3 rounded-xl border-white/5 flex items-center gap-4">
-                <span class="w-2 h-2 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>
-                <span class="text-sm">Cardiothoracic Surgery</span>
-              </div>
-              <div class="glass px-4 py-3 rounded-xl border-white/5 flex items-center gap-4">
-                <span class="w-2 h-2 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>
-                <span class="text-sm">AI Applications in Healthcare</span>
-              </div>
+            <h4 class="font-display text-sm font-bold mb-1">Python Programming</h4>
+            <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest block">Online Coursework</span>
+          </div>
+
+          <div class="glass p-6 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <svg class="w-5 h-5 text-accent-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+              </svg>
+              <span class="shrink-0 font-mono text-[9px] text-accent-cyan bg-accent-cyan/5 border border-accent-cyan/20 px-3 py-1 rounded-full uppercase tracking-widest">Currently Pursuing</span>
             </div>
-          </article>
+            <h4 class="font-display text-sm font-bold mb-1">Statistical Computing</h4>
+            <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest block">Self-Directed Study</span>
+          </div>
+
+          <div class="glass p-6 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <svg class="w-5 h-5 text-accent-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+              </svg>
+              <span class="shrink-0 font-mono text-[9px] text-accent-cyan bg-accent-cyan/5 border border-accent-cyan/20 px-3 py-1 rounded-full uppercase tracking-widest">Currently Pursuing</span>
+            </div>
+            <h4 class="font-display text-sm font-bold mb-1">Research Methodology</h4>
+            <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest block">Self-Directed Study</span>
+          </div>
+
+          <!-- Slots 05–12: rename and update issuer for each of your real certificates -->
+          <div class="glass p-6 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <svg class="w-5 h-5 text-accent-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+              </svg>
+              <span class="shrink-0 font-mono text-[9px] text-secondary bg-secondary/10 border border-secondary/20 px-3 py-1 rounded-full uppercase tracking-widest">Completed</span>
+            </div>
+            <h4 class="font-display text-sm font-bold mb-1">Certificate Title 05</h4>
+            <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest block">Issuer · Year</span>
+          </div>
+
+          <div class="glass p-6 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <svg class="w-5 h-5 text-accent-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+              </svg>
+              <span class="shrink-0 font-mono text-[9px] text-secondary bg-secondary/10 border border-secondary/20 px-3 py-1 rounded-full uppercase tracking-widest">Completed</span>
+            </div>
+            <h4 class="font-display text-sm font-bold mb-1">Certificate Title 06</h4>
+            <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest block">Issuer · Year</span>
+          </div>
+
+          <div class="glass p-6 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <svg class="w-5 h-5 text-accent-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+              </svg>
+              <span class="shrink-0 font-mono text-[9px] text-secondary bg-secondary/10 border border-secondary/20 px-3 py-1 rounded-full uppercase tracking-widest">Completed</span>
+            </div>
+            <h4 class="font-display text-sm font-bold mb-1">Certificate Title 07</h4>
+            <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest block">Issuer · Year</span>
+          </div>
+
+          <div class="glass p-6 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <svg class="w-5 h-5 text-accent-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+              </svg>
+              <span class="shrink-0 font-mono text-[9px] text-secondary bg-secondary/10 border border-secondary/20 px-3 py-1 rounded-full uppercase tracking-widest">Completed</span>
+            </div>
+            <h4 class="font-display text-sm font-bold mb-1">Certificate Title 08</h4>
+            <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest block">Issuer · Year</span>
+          </div>
+
+          <div class="glass p-6 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <svg class="w-5 h-5 text-accent-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+              </svg>
+              <span class="shrink-0 font-mono text-[9px] text-secondary bg-secondary/10 border border-secondary/20 px-3 py-1 rounded-full uppercase tracking-widest">Completed</span>
+            </div>
+            <h4 class="font-display text-sm font-bold mb-1">Certificate Title 09</h4>
+            <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest block">Issuer · Year</span>
+          </div>
+
+          <div class="glass p-6 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <svg class="w-5 h-5 text-accent-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+              </svg>
+              <span class="shrink-0 font-mono text-[9px] text-secondary bg-secondary/10 border border-secondary/20 px-3 py-1 rounded-full uppercase tracking-widest">Completed</span>
+            </div>
+            <h4 class="font-display text-sm font-bold mb-1">Certificate Title 10</h4>
+            <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest block">Issuer · Year</span>
+          </div>
+
+          <div class="glass p-6 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <svg class="w-5 h-5 text-accent-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+              </svg>
+              <span class="shrink-0 font-mono text-[9px] text-secondary bg-secondary/10 border border-secondary/20 px-3 py-1 rounded-full uppercase tracking-widest">Completed</span>
+            </div>
+            <h4 class="font-display text-sm font-bold mb-1">Certificate Title 11</h4>
+            <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest block">Issuer · Year</span>
+          </div>
+
+          <div class="glass p-6 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <svg class="w-5 h-5 text-accent-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+              </svg>
+              <span class="shrink-0 font-mono text-[9px] text-secondary bg-secondary/10 border border-secondary/20 px-3 py-1 rounded-full uppercase tracking-widest">Completed</span>
+            </div>
+            <h4 class="font-display text-sm font-bold mb-1">Certificate Title 12</h4>
+            <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest block">Issuer · Year</span>
+          </div>
 
         </div>
 
+        <!-- Currently exploring -->
+        <article class="module-card glass p-8 rounded-2xl">
+          <div class="flex items-center gap-4 mb-8">
+            <svg class="w-6 h-6 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+            </svg>
+            <h3 class="font-display text-xl font-bold">Currently Exploring</h3>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="glass px-4 py-3 rounded-xl border-white/5 flex items-center gap-4">
+              <span class="w-2 h-2 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>
+              <span class="text-sm">Cardiovascular Genetics</span>
+            </div>
+            <div class="glass px-4 py-3 rounded-xl border-white/5 flex items-center gap-4">
+              <span class="w-2 h-2 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>
+              <span class="text-sm">Biomedical Data Science</span>
+            </div>
+            <div class="glass px-4 py-3 rounded-xl border-white/5 flex items-center gap-4">
+              <span class="w-2 h-2 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>
+              <span class="text-sm">Cardiothoracic Surgery</span>
+            </div>
+            <div class="glass px-4 py-3 rounded-xl border-white/5 flex items-center gap-4">
+              <span class="w-2 h-2 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>
+              <span class="text-sm">AI Applications in Healthcare</span>
+            </div>
+          </div>
+        </article>
+
+        
+
       </div>
     </section>
-
     <!-- ============================================================
          CURRICULUM VITAE
          ============================================================ -->
