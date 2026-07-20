@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelvin Gameli Enam | Medical Laboratory Science Portfolio</title>
+  <meta name="description" content="Portfolio of Kelvin Gameli Enam, a Medical Laboratory Science student building a foundation in laboratory medicine, biomedical research, genetics, and data science — with the long-term goal of becoming a cardiothoracic surgeon.">
+  <meta name="author" content="Kelvin Gameli Enam">
+  <meta name="theme-color" content="#020617">
+
+  <!-- ECG heartbeat favicon (inline SVG, no external file needed) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23020617'/%3E%3Cpath d='M8 34h12l4-14 8 28 5-18 3 4h16' fill='none' stroke='%2322d3ee' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+  <!-- Self-hosted fonts (Manrope / Inter / JetBrains Mono) + compiled Tailwind styles -->
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="bg-surface text-on-surface font-body antialiased selection:bg-accent-cyan/30 selection:text-white">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ECG monitor background (sweeping trace, canvas-based) -->
+  <canvas id="ecg-bg" aria-hidden="true"></canvas>
+
+  <!-- ============================================================
+       FLOATING NAVIGATION
+       ============================================================ -->
+  <header class="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-6xl">
+    <nav id="primary-nav" class="glass rounded-full flex justify-between items-center shadow-2xl border border-white/10 py-2.5 px-4 sm:px-5 gap-4" aria-label="Primary">
+
+      <!-- Brand -->
+      <a href="#home" class="flex items-center gap-3 shrink-0">
+        <span class="w-8 h-8 rounded bg-accent-cyan flex items-center justify-center text-surface font-display font-bold text-lg" aria-hidden="true">KG</span>
+        <span class="font-display font-bold text-sm tracking-tight hidden sm:block">KELVIN GAMELI ENAM</span>
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="hidden lg:flex items-center gap-1 font-mono text-[11px] uppercase tracking-widest">
+        <li><a class="nav-link active" href="#home">Home</a></li>
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#research">Research</a></li>
+        <li><a class="nav-link" href="#skills">Skills</a></li>
+        <li><a class="nav-link" href="#journey">Journey</a></li>
+        <li><a class="nav-link" href="#portfolio">Portfolio</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="flex items-center gap-3 shrink-0">
+        <a class="hidden sm:inline-block px-5 py-2 bg-accent-cyan text-surface rounded-full font-mono text-[11px] font-bold uppercase hover:brightness-110 transition-all"
+           href="assets/Kelvin_Gameli_Enam_CV.pdf" download>Download&nbsp;CV</a>
+
+        <!-- Mobile menu button -->
+        <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu"
+                class="lg:hidden w-10 h-10 glass rounded-full flex items-center justify-center text-accent-cyan border border-white/10">
+          <svg id="menu-icon-open" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/>
+          </svg>
+          <svg id="menu-icon-close" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu panel -->
+    <div id="mobile-menu" class="hidden lg:hidden mt-3 glass rounded-2xl border border-white/10 p-3">
+      <ul class="flex flex-col gap-1 font-mono text-xs uppercase tracking-widest">
+        <li><a class="nav-link active block px-4 py-3" href="#home">Home</a></li>
+        <li><a class="nav-link block px-4 py-3" href="#about">About</a></li>
+        <li><a class="nav-link block px-4 py-3" href="#research">Research</a></li>
+        <li><a class="nav-link block px-4 py-3" href="#skills">Skills</a></li>
+        <li><a class="nav-link block px-4 py-3" href="#journey">Journey</a></li>
+        <li><a class="nav-link block px-4 py-3" href="#portfolio">Portfolio</a></li>
+        <li><a class="nav-link block px-4 py-3" href="#contact">Contact</a></li>
+        <li class="pt-2 mt-1 border-t border-white/10">
+          <a class="block px-4 py-3 text-accent-cyan font-bold" href="assets/Kelvin_Gameli_Enam_CV.pdf" download>Download_CV</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section id="home" class="relative min-h-screen flex items-center overflow-hidden grid-bg" aria-label="Introduction">
+
+      <!-- Ambient background light blobs -->
+      <div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-[120px]" aria-hidden="true"></div>
+      <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]" aria-hidden="true"></div>
+
+      <div class="w-full max-w-container-max mx-auto px-6 relative z-10 pt-32 pb-20">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+          <!-- Hero copy -->
+          <div>
+            <p class="inline-flex items-center gap-2 px-3 py-1.5 rounded border border-accent-cyan/30 bg-accent-cyan/5 text-accent-cyan font-mono text-[10px] sm:text-[11px] uppercase tracking-widest mb-8">
+              <span class="w-2 h-2 rounded-full bg-accent-cyan animate-pulse" aria-hidden="true"></span>
+              Medical Laboratory Science Student
+            </p>
+
+            <h1 class="font-display text-5xl sm:text-6xl xl:text-7xl font-extrabold leading-[1.05] mb-6">
+              Kelvin Gameli <br>
+              <span class="text-gradient-cyan">Enam</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-on-surface-variant mb-4 max-w-xl leading-relaxed">
+              Medical Laboratory Science Student | Biomedical Research Enthusiast | Future Cardiothoracic Surgeon
+            </p>
+            <p class="font-mono text-sm text-accent-cyan/60 mb-10">Integrating laboratory medicine, biomedical research &amp; data science.</p>
+
+            <div class="flex flex-wrap gap-4 sm:gap-6">
+              <a href="#research" class="hover-glow-cyan px-6 sm:px-8 py-4 bg-primary text-white border border-transparent rounded-xl font-mono text-sm font-bold transition-all inline-flex items-center gap-3">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2-.1-2.8a2.2 2.2 0 0 0-2.9-.2Z"/>
+                  <path d="m12 15-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.9 7.4-6 11a22.4 22.4 0 0 1-4 2Z"/>
+                  <path d="M9 12H4s.5-3.8 3-6l4 1"/><path d="M12 15v5s3.8-.5 6-3l-1-4"/>
+                </svg>
+                EXPLORE_RESEARCH
+              </a>
+              <a href="#contact" class="px-6 sm:px-8 py-4 glass text-white rounded-xl font-mono text-sm hover:border-accent-cyan/50 transition-all inline-flex items-center gap-3">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+                </svg>
+                CONTACT
+              </a>
+            </div>
+          </div>
+
+          <!-- Portrait -->
+          <div class="relative">
+            <div class="relative aspect-square max-w-md mx-auto glass rounded-3xl p-4 glow-cyan overflow-hidden group">
+              <div class="absolute inset-0 bg-gradient-to-br from-accent-cyan/10 to-transparent pointer-events-none" aria-hidden="true"></div>
+              <img src="assets/img/portrait.jpg" alt="Portrait of Kelvin Gameli Enam" width="366" height="512"
+                   fetchpriority="high"
+                   style="object-position: center 90%"
+                   class="w-full h-full object-cover rounded-2xl opacity-80 group-hover:opacity-100 transition-opacity">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT ME
+         ============================================================ -->
+    <section id="about" class="py-20 sm:py-section-gap relative" aria-labelledby="about-heading">
+      <div class="max-w-container-max mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
+
+          <!-- Left column: narrative -->
+          <div>
+            <span class="kicker mb-4">01 // Profile</span>
+            <h2 id="about-heading" class="font-display text-4xl sm:text-5xl font-bold mb-8">About Me</h2>
+
+            <div class="space-y-6 text-on-surface-variant text-base sm:text-lg leading-relaxed max-w-prose">
+              <p>
+                I am a Medical Laboratory Science student with interests in cardiovascular health, genetics, biomedical research, and healthcare innovation. My academic journey is focused on understanding disease mechanisms through laboratory science while building the foundation for a future career in medicine.
+              </p>
+              <p>
+                My current research explores ACE I/D polymorphism and its relationship with cardiometabolic risk factors in a Ghanaian population. Through this experience, I am developing skills in molecular techniques, laboratory investigations, and data analysis while gaining exposure to biomedical research.
+              </p>
+              <p>
+                Beyond the laboratory, I am developing skills in data science and scientific communication. My long-term ambition is to become a cardiothoracic surgeon who combines clinical expertise, research, and innovation to improve patient care.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right column: highlight cards -->
+          <div class="space-y-6">
+            <article class="glass p-8 rounded-2xl border-white/5 hover:border-accent-cyan/30 transition-all">
+              <div class="flex items-center gap-4 mb-4">
+                <svg class="w-6 h-6 text-accent-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7 7-7Z"/>
+                  <path d="M3.2 12h4.3l1.5-2.8 3 5.6 1.5-2.8h4.3"/>
+                </svg>
+                <h3 class="font-display text-xl font-bold">Research Interest</h3>
+              </div>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                Cardiovascular genetics, molecular medicine, and understanding disease mechanisms through laboratory research.
+              </p>
+            </article>
+
+            <article class="glass p-8 rounded-2xl border-white/5 hover:border-secondary/30 transition-all">
+              <div class="flex items-center gap-4 mb-4">
+                <svg class="w-6 h-6 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="3" y1="21" x2="21" y2="21"/>
+                  <rect x="5" y="12" width="3" height="9" rx="0.5"/><rect x="10.5" y="7" width="3" height="14" rx="0.5"/><rect x="16" y="3" width="3" height="18" rx="0.5"/>
+                </svg>
+                <h3 class="font-display text-xl font-bold">Current Focus</h3>
+              </div>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                Developing skills in laboratory techniques, statistical analysis, programming, and biomedical research.
+              </p>
+            </article>
+
+            <article class="glass p-8 rounded-2xl border-white/5 hover:border-white/20 transition-all">
+              <div class="flex items-center gap-4 mb-4">
+                <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/><polygon points="16 8 14 14 8 16 10 10 16 8"/>
+                </svg>
+                <h3 class="font-display text-xl font-bold">Professional Vision</h3>
+              </div>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                Building toward a future career in cardiothoracic surgery while integrating research and technology into healthcare.
+              </p>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         RESEARCH (final year project dashboard)
+         ============================================================ -->
+    <section id="research" class="py-20 sm:py-section-gap relative" aria-labelledby="research-heading">
+      <div class="max-w-container-max mx-auto px-6">
+
+        <!-- Section header + status widget -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <span class="kicker mb-2">02 // Core_Investigation</span>
+            <h2 id="research-heading" class="font-display text-4xl sm:text-5xl font-bold">Scientific Inquiry</h2>
+          </div>
+          <div class="glass px-6 py-3 rounded-xl border-accent-cyan/20 flex items-center gap-4 self-start md:self-auto">
+            <div class="flex flex-col">
+              <span class="font-mono text-[10px] text-on-surface-variant uppercase">Session_Uptime</span>
+              <span id="session-uptime" class="font-mono text-xs font-bold text-accent-cyan">00:00:00</span>
+            </div>
+            <div class="w-px h-8 bg-white/10" aria-hidden="true"></div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-secondary animate-pulse" aria-hidden="true"></span>
+              <span class="font-mono text-[11px] font-bold text-secondary uppercase">Final_Year_Project</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured final year project -->
+        <article class="glass rounded-[2rem] p-8 md:p-12 mb-8 border-accent-cyan/20 relative overflow-hidden">
+          <div class="absolute top-0 right-0 p-8 font-mono text-[80px] leading-none opacity-5 pointer-events-none select-none" aria-hidden="true">FYP_01</div>
+
+          <div class="relative z-10">
+            <span class="inline-block font-mono text-[10px] uppercase tracking-widest text-surface bg-accent-cyan rounded-full px-3 py-1 mb-6 font-bold">
+              Final Year Research Project
+            </span>
+
+            <h3 class="font-display text-2xl sm:text-3xl font-bold mb-8 leading-tight text-accent-cyan max-w-3xl">
+              ACE I/D Polymorphism and Cardiometabolic Risk Factors in a Ghanaian Population
+            </h3>
+
+            <div class="grid lg:grid-cols-3 gap-10 lg:gap-12">
+              <div class="lg:col-span-2">
+                <!-- Techniques being developed through the project -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                  <div class="glass p-4 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
+                    <span class="font-mono text-[10px] text-accent-cyan block mb-1">TECHNIQUE_01</span>
+                    <span class="text-sm font-bold">PCR Amplification</span>
+                  </div>
+                  <div class="glass p-4 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
+                    <span class="font-mono text-[10px] text-accent-cyan block mb-1">TECHNIQUE_02</span>
+                    <span class="text-sm font-bold">DNA Extraction</span>
+                  </div>
+                  <div class="glass p-4 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
+                    <span class="font-mono text-[10px] text-accent-cyan block mb-1">TECHNIQUE_03</span>
+                    <span class="text-sm font-bold">Genotyping</span>
+                  </div>
+                  <div class="glass p-4 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
+                    <span class="font-mono text-[10px] text-accent-cyan block mb-1">TECHNIQUE_04</span>
+                    <span class="text-sm font-bold">Data Analysis</span>
+                  </div>
+                </div>
+
+                <p class="text-on-surface-variant text-base sm:text-lg leading-relaxed max-w-2xl">
+                  My current final year research project investigates how the ACE insertion/deletion (I/D) polymorphism relates to cardiometabolic risk factors — including hypertension and metabolic syndrome — within a Ghanaian population, with the aim of informing early risk stratification.
+                </p>
+              </div>
+
+              <div class="flex flex-col justify-end">
+                <button id="research-toggle" type="button" aria-expanded="false" aria-controls="research-details"
+                        class="w-full py-4 glass border-accent-cyan/30 text-accent-cyan rounded-xl font-mono text-xs font-bold hover:bg-accent-cyan hover:text-surface transition-all uppercase tracking-widest inline-flex items-center justify-center gap-2">
+                  <span data-label>View Research Summary</span>
+                  <svg data-chevron class="w-4 h-4 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Expandable project summary —
+                 placeholders grow as the project progresses -->
+            <div id="research-details" hidden class="mt-10 pt-10 border-t border-white/10">
+              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="glass p-6 rounded-xl border-white/5">
+                  <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-2">Section_01 · In_Preparation</span>
+                  <h4 class="font-display text-base font-bold mb-2">Research Background</h4>
+                  <p class="text-on-surface-variant text-sm leading-relaxed">
+                    Literature overview of the ACE I/D polymorphism, the renin–angiotensin system, and reported links to hypertension and cardiometabolic disease. Documentation to be added as the project progresses.
+                  </p>
+                </div>
+
+                <div class="glass p-6 rounded-xl border-white/5">
+                  <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-2">Section_02 · In_Preparation</span>
+                  <h4 class="font-display text-base font-bold mb-2">Methodology</h4>
+                  <p class="text-on-surface-variant text-sm leading-relaxed">
+                    Study design, participant sampling, data collection, and statistical analysis plan will be documented here.
+                  </p>
+                </div>
+
+                <div class="glass p-6 rounded-xl border-white/5">
+                  <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-2">Section_03 · In_Preparation</span>
+                  <h4 class="font-display text-base font-bold mb-2">Laboratory Techniques</h4>
+                  <p class="text-on-surface-variant text-sm leading-relaxed">
+                    DNA extraction, PCR amplification, gel electrophoresis, and genotyping workflows used in the project.
+                  </p>
+                </div>
+
+                <div class="glass p-6 rounded-xl border-white/5">
+                  <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-2">Section_04 · In_Preparation</span>
+                  <h4 class="font-display text-base font-bold mb-2">Findings</h4>
+                  <p class="text-on-surface-variant text-sm leading-relaxed">
+                    Results and interpretation will be published here once laboratory work and analysis are complete.
+                  </p>
+                </div>
+
+                <div class="glass p-6 rounded-xl border-white/5">
+                  <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-2">Section_05 · In_Preparation</span>
+                  <h4 class="font-display text-base font-bold mb-2">Presentation / Publication</h4>
+                  <p class="text-on-surface-variant text-sm leading-relaxed">
+                    The final dissertation, poster, and any conference presentations or publications arising from this work will be shared here.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Related interest areas -->
+        <span class="kicker mb-6 mt-16">Related_Interest_Areas</span>
+        <div class="grid md:grid-cols-3 gap-8">
+          <article class="module-card glass p-8 rounded-2xl">
+            <span class="font-mono text-[10px] text-accent-cyan mb-4 block">MODULE_01</span>
+            <h3 class="font-display text-xl font-bold mb-4">Cardiovascular Genetics</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Exploring the hereditary components of cardiovascular and other non-communicable diseases in Sub-Saharan African populations.</p>
+          </article>
+          <article class="module-card glass p-8 rounded-2xl glow-cyan">
+            <span class="font-mono text-[10px] text-accent-cyan mb-4 block">MODULE_02</span>
+            <h3 class="font-display text-xl font-bold mb-4">Precision Medicine</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Interested in how individual genetic and environmental profiles can guide more targeted, effective patient care.</p>
+          </article>
+          <article class="module-card glass p-8 rounded-2xl">
+            <span class="font-mono text-[10px] text-accent-cyan mb-4 block">MODULE_03</span>
+            <h3 class="font-display text-xl font-bold mb-4">AI in Healthcare</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Curious about how machine learning can support diagnostics, predict outcomes, and improve laboratory workflows.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TECHNICAL SKILLS
+         ============================================================ -->
+    <section id="skills" class="py-20 sm:py-section-gap bg-surface-container/50" aria-labelledby="skills-heading">
+      <div class="max-w-container-max mx-auto px-6">
+
+        <div class="text-center mb-20">
+          <span class="kicker mb-4">03 // System_Capabilities</span>
+          <h2 id="skills-heading" class="font-display text-4xl sm:text-5xl font-bold">Technical Proficiency</h2>
+          <p class="font-mono text-xs text-on-surface-variant mt-4 uppercase tracking-widest">Developing competencies — growing with every rotation &amp; project</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+
+          <!-- Laboratory Medicine -->
+          <article class="module-card glass p-8 rounded-3xl border-primary/20">
+            <div class="w-12 h-12 glass rounded-xl flex items-center justify-center text-primary glow-cyan mb-6" aria-hidden="true">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 2v6L4.5 18a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 8V2"/><path d="M8.5 2h7"/><path d="M7 16h10"/>
+              </svg>
+            </div>
+            <h3 class="font-mono text-xs font-bold text-accent-cyan uppercase mb-6 tracking-widest">Laboratory Medicine</h3>
+            <ul class="space-y-3 text-sm text-on-surface-variant">
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent-cyan shrink-0" aria-hidden="true"></span>Clinical Chemistry</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent-cyan shrink-0" aria-hidden="true"></span>Hematology</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent-cyan shrink-0" aria-hidden="true"></span>Molecular Diagnostics</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent-cyan shrink-0" aria-hidden="true"></span>Quality Assurance</li>
+            </ul>
+          </article>
+
+          <!-- Data Science -->
+          <article class="module-card glass p-8 rounded-3xl border-secondary/20">
+            <div class="w-12 h-12 glass rounded-xl flex items-center justify-center text-secondary glow-emerald mb-6" aria-hidden="true">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>
+              </svg>
+            </div>
+            <h3 class="font-mono text-xs font-bold text-secondary uppercase mb-6 tracking-widest">Data Science</h3>
+            <ul class="space-y-3 text-sm text-on-surface-variant">
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary shrink-0" aria-hidden="true"></span>R and Python for Research</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary shrink-0" aria-hidden="true"></span>Statistical Analysis</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary shrink-0" aria-hidden="true"></span>Data Visualization</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-secondary shrink-0" aria-hidden="true"></span>Clinical Data Interpretation</li>
+            </ul>
+          </article>
+
+          <!-- Design & Communication -->
+          <article class="module-card glass p-8 rounded-3xl border-primary/20">
+            <div class="w-12 h-12 glass rounded-xl flex items-center justify-center text-primary glow-cyan mb-6" aria-hidden="true">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="8" cy="10" r="1" fill="currentColor"/><circle cx="12" cy="7.5" r="1" fill="currentColor"/><circle cx="16" cy="10" r="1" fill="currentColor"/>
+                <path d="M12 22c1-2 .2-3.7 1.7-4.7S17 16 17 14"/>
+              </svg>
+            </div>
+            <h3 class="font-mono text-xs font-bold text-accent-cyan uppercase mb-6 tracking-widest">Design &amp; Communication</h3>
+            <ul class="space-y-3 text-sm text-on-surface-variant">
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent-cyan shrink-0" aria-hidden="true"></span>Scientific Visualization</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent-cyan shrink-0" aria-hidden="true"></span>Graphic Design</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent-cyan shrink-0" aria-hidden="true"></span>Research Presentation Design</li>
+              <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent-cyan shrink-0" aria-hidden="true"></span>Visual Communication</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PROFESSIONAL JOURNEY (timeline)
+         ============================================================ -->
+    <section id="journey" class="py-20 sm:py-section-gap" aria-labelledby="journey-heading">
+      <div class="max-w-container-max mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+
+          <div class="mb-16">
+            <span class="kicker mb-4">04 // Boot_Sequence</span>
+            <h2 id="journey-heading" class="font-display text-4xl sm:text-5xl font-bold">My Professional Journey</h2>
+          </div>
+
+          <ol class="space-y-0 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-white/10 list-none p-0">
+
+            <!-- Milestone 01 -->
+            <li class="relative pl-12 pb-12">
+              <div class="absolute left-0 top-1.5 w-6 h-6 rounded-full glass border-accent-cyan glow-cyan z-10" aria-hidden="true"></div>
+              <div class="font-mono text-[10px] text-accent-cyan mb-2 uppercase tracking-widest font-bold">Status: Current_Stage</div>
+              <h3 class="font-display text-2xl font-bold mb-3">Medical Laboratory Science</h3>
+              <p class="text-on-surface-variant leading-relaxed">Building a foundation in clinical diagnostics, laboratory techniques, and disease investigation.</p>
+            </li>
+
+            <!-- Milestone 02 -->
+            <li class="relative pl-12 pb-12">
+              <div class="absolute left-0 top-1.5 w-6 h-6 rounded-full glass border-secondary glow-emerald z-10" aria-hidden="true"></div>
+              <div class="font-mono text-[10px] text-secondary mb-2 uppercase tracking-widest font-bold">Status: Active_Phase</div>
+              <h3 class="font-display text-2xl font-bold mb-3">Biomedical Research</h3>
+              <p class="text-on-surface-variant leading-relaxed">Developing research experience through molecular biology, genetics, and biomedical investigations.</p>
+            </li>
+
+            <!-- Milestone 03 -->
+            <li class="relative pl-12 pb-12">
+              <div class="absolute left-0 top-1.5 w-6 h-6 rounded-full glass border-white/20 z-10" aria-hidden="true"></div>
+              <div class="font-mono text-[10px] text-on-surface-variant mb-2 uppercase tracking-widest font-bold">Status: In_Progress</div>
+              <h3 class="font-display text-2xl font-bold mb-3">Data Science Integration</h3>
+              <p class="text-on-surface-variant leading-relaxed">Applying programming and statistics to better understand healthcare data.</p>
+            </li>
+
+            <!-- Milestone 04 -->
+            <li class="relative pl-12 opacity-60">
+              <div class="absolute left-0 top-1.5 w-6 h-6 rounded-full glass border-white/10 z-10" aria-hidden="true"></div>
+              <div class="font-mono text-[10px] text-on-surface-variant/60 mb-2 uppercase tracking-widest font-bold">Status: Long_Term_Goal</div>
+              <h3 class="font-display text-2xl font-bold mb-3">Cardiothoracic Surgery Pathway</h3>
+              <p class="text-on-surface-variant leading-relaxed">Long-term goal of pursuing medical training and specializing in cardiothoracic surgery while integrating research and innovation.</p>
+            </li>
+
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SCIENTIFIC COMMUNICATION & DESIGN (gallery)
+         ============================================================ -->
+    <section id="portfolio" class="py-20 sm:py-section-gap glass border-y border-white/5" aria-labelledby="portfolio-heading">
+      <div class="max-w-container-max mx-auto px-6">
+
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <span class="kicker kicker-emerald mb-4">05 // Output_Gallery</span>
+            <h2 id="portfolio-heading" class="font-display text-4xl sm:text-5xl font-bold">Scientific Communication &amp; Design</h2>
+          </div>
+          <p class="font-mono text-[11px] text-on-surface-variant uppercase tracking-widest max-w-xs leading-relaxed">
+            This gallery will grow as more projects are completed.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <figure class="group relative aspect-[4/3] rounded-2xl overflow-hidden glass border-white/10 glow-cyan m-0">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100"
+                 src="assets/img/scientific-visualizations.jpg" alt="Example of a scientific visualization graphic" width="512" height="279" loading="lazy" decoding="async">
+            <figcaption class="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent p-7 flex flex-col justify-end">
+              <span class="font-mono text-[9px] text-accent-cyan mb-2 uppercase tracking-widest">Collection_01</span>
+              <h3 class="font-display text-xl font-bold mb-1">Scientific Visualizations</h3>
+              <p class="text-on-surface-variant text-xs leading-relaxed">Research diagrams, medical illustrations, and scientific graphics.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="group relative aspect-[4/3] rounded-2xl overflow-hidden glass border-white/10 m-0">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100"
+                 src="assets/img/research-presentations.jpg" alt="Example of an academic research presentation" width="512" height="279" loading="lazy" decoding="async">
+            <figcaption class="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent p-7 flex flex-col justify-end">
+              <span class="font-mono text-[9px] text-accent-cyan mb-2 uppercase tracking-widest">Collection_02</span>
+              <h3 class="font-display text-xl font-bold mb-1">Research Presentations</h3>
+              <p class="text-on-surface-variant text-xs leading-relaxed">Posters, academic presentations, and educational materials.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="group relative aspect-[4/3] rounded-2xl overflow-hidden glass border-white/10 glow-emerald m-0">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100"
+                 src="assets/img/design-projects.jpg" alt="Example of a graphic design project" width="512" height="279" loading="lazy" decoding="async">
+            <figcaption class="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent p-7 flex flex-col justify-end">
+              <span class="font-mono text-[9px] text-secondary mb-2 uppercase tracking-widest">Collection_03</span>
+              <h3 class="font-display text-xl font-bold mb-1">Design Projects</h3>
+              <p class="text-on-surface-variant text-xs leading-relaxed">Selected graphic design work demonstrating visual communication skills.</p>
+            </figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CURRICULUM VITAE
+         ============================================================ -->
+    <section id="resume" class="py-20 sm:py-section-gap" aria-labelledby="resume-heading">
+      <div class="max-w-container-max mx-auto px-6">
+        <div class="glass rounded-[3rem] p-8 sm:p-12 lg:p-20 flex flex-col lg:flex-row items-center gap-16 border-white/5 relative overflow-hidden">
+
+          <div class="lg:w-1/2 relative z-10">
+            <span class="kicker mb-4">06 // Root_Directory / Documents</span>
+            <h2 id="resume-heading" class="font-display text-4xl sm:text-5xl font-bold mb-8">Curriculum Vitae</h2>
+            <p class="text-on-surface-variant text-base sm:text-lg mb-12 leading-relaxed">
+              Explore my academic background, laboratory experience, research activities, and professional development journey.
+            </p>
+            <!-- NOTE: place your real CV at assets/Kelvin_Gameli_Enam_CV.pdf -->
+            <div class="flex flex-wrap gap-4 sm:gap-6">
+              <a href="assets/Kelvin_Gameli_Enam_CV.pdf" download
+                 class="hover-glow-cyan px-6 sm:px-8 py-4 bg-accent-cyan text-surface border border-transparent rounded-xl font-mono text-sm font-bold transition-all inline-flex items-center gap-3">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                DOWNLOAD_PDF
+              </a>
+              <a href="assets/Kelvin_Gameli_Enam_CV.pdf" target="_blank" rel="noopener"
+                 class="px-6 sm:px-8 py-4 glass text-white rounded-xl font-mono text-sm hover:border-accent-cyan/30 transition-all inline-flex items-center gap-3">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+                VIEW_IN_BROWSER
+              </a>
+            </div>
+          </div>
+
+          <!-- Live CV preview (embedded PDF with a static fallback image) -->
+          <div class="lg:w-1/2 flex justify-center relative">
+            <div class="w-full max-w-md aspect-[3/4] glass rounded-2xl p-3 flex flex-col glow-cyan border-accent-cyan/20">
+              <div class="relative flex-1 rounded-xl overflow-hidden bg-surface">
+                <!-- Static first-page fallback (shown if the browser can't embed PDFs) -->
+                <img src="assets/img/cv-preview.jpg" alt="First page of Kelvin Gameli Enam's CV"
+                     class="absolute inset-0 w-full h-full object-cover object-top" loading="lazy" decoding="async">
+                <!-- Live PDF preview -->
+                <iframe src="assets/Kelvin_Gameli_Enam_CV.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+                        title="CV preview — Kelvin Gameli Enam"
+                        class="absolute inset-0 w-full h-full"
+                        loading="lazy"></iframe>
+                <!-- Click-through overlay: opens the full PDF in a new tab -->
+                <a href="assets/Kelvin_Gameli_Enam_CV.pdf" target="_blank" rel="noopener"
+                   class="absolute inset-0 z-10 flex items-end justify-end p-3">
+                  <span class="font-mono text-[9px] uppercase tracking-widest px-3 py-1.5 rounded glass border border-accent-cyan/30 text-accent-cyan">Open_Full ↗</span>
+                </a>
+              </div>
+              <div class="pt-3 pb-1 flex justify-between gap-4">
+                <span class="font-mono text-[9px] text-on-surface-variant">FILE: Kelvin_Gameli_Enam_CV.pdf</span>
+                <span class="font-mono text-[9px] text-accent-cyan">FORMAT: PDF</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT
+         ============================================================ -->
+    <section id="contact" class="py-20 sm:py-section-gap relative" aria-labelledby="contact-heading">
+      <div class="max-w-container-max mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 lg:gap-20">
+
+          <!-- Left: intro + channels -->
+          <div>
+            <span class="kicker mb-4">07 // Network_Gateway</span>
+            <h2 id="contact-heading" class="font-display text-4xl sm:text-5xl font-bold mb-8">Let's Connect</h2>
+            <p class="text-on-surface-variant text-base sm:text-lg mb-12 leading-relaxed">
+              Open to research collaboration, academic mentorship, and conversations about laboratory medicine, cardiovascular genetics, or the journey toward cardiothoracic surgery.
+            </p>
+
+            <address class="not-italic space-y-6 font-mono text-sm">
+              <!-- TODO: replace with your real email address -->
+              <a class="flex items-center gap-5 text-on-surface-variant hover:text-accent-cyan transition-colors" href="mailto:kelvin.gameli.enam@gmail.com">
+                <span class="w-10 h-10 glass rounded-lg flex items-center justify-center text-accent-cyan shrink-0" aria-hidden="true">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>
+                  </svg>
+                </span>
+                kelvin.gameli.enam@gmail.com
+              </a>
+
+              <div class="flex items-center gap-5 text-on-surface-variant">
+                <span class="w-10 h-10 glass rounded-lg flex items-center justify-center text-accent-cyan shrink-0" aria-hidden="true">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </span>
+                Accra, Ghana <span class="text-on-surface-variant/60">[5.6037° N, 0.1870° W]</span>
+              </div>
+            </address>
+
+            <!-- Social / academic profiles
+                 TODO: replace these hrefs with your real profile URLs -->
+            <div class="flex flex-wrap gap-4 mt-10">
+              <a href="https://www.linkedin.com/in/kelvin-gameli-enam" target="_blank" rel="noopener"
+                 class="group flex items-center gap-3 glass px-5 py-3 rounded-xl border-white/10 hover:border-accent-cyan/40 transition-all font-mono text-[11px] uppercase tracking-widest text-on-surface-variant hover:text-accent-cyan">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V8h4v2"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                </svg>
+                LinkedIn
+              </a>
+              <a href="https://github.com/kelvingamelienam" target="_blank" rel="noopener"
+                 class="group flex items-center gap-3 glass px-5 py-3 rounded-xl border-white/10 hover:border-accent-cyan/40 transition-all font-mono text-[11px] uppercase tracking-widest text-on-surface-variant hover:text-accent-cyan">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/>
+                </svg>
+                GitHub
+              </a>
+              <!-- ORCID: uncomment and add your iD once registered
+              <a href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener"
+                 class="group flex items-center gap-3 glass px-5 py-3 rounded-xl border-white/10 hover:border-accent-cyan/40 transition-all font-mono text-[11px] uppercase tracking-widest text-on-surface-variant hover:text-accent-cyan">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/><circle cx="9.5" cy="8" r="1" fill="currentColor"/><path d="M9.5 11v6M13.5 11v6M13.5 11h1.8a2.7 2.7 0 0 1 0 5.4h-1.8" stroke-linecap="round"/>
+                </svg>
+                ORCID
+              </a>
+              -->
+            </div>
+          </div>
+
+          <!-- Right: contact form interface -->
+          <div class="glass p-8 md:p-12 rounded-3xl border-white/10 glow-cyan">
+            <!-- data-recipient: set the email address that should receive messages -->
+            <form id="contact-form" data-recipient="kelvin.gameli.enam@gmail.com" class="space-y-8" novalidate>
+              <div class="grid sm:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                  <label for="contact-name" class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest font-bold block">Client_ID</label>
+                  <input id="contact-name" name="name" type="text" placeholder="Your Name" required
+                         class="w-full bg-surface-container border border-white/10 rounded-lg focus:ring-1 focus:ring-accent-cyan focus:border-accent-cyan transition-all px-5 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/50">
+                </div>
+                <div class="space-y-3">
+                  <label for="contact-email" class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest font-bold block">Email_Address</label>
+                  <input id="contact-email" name="email" type="email" placeholder="you@domain.com" required
+                         class="w-full bg-surface-container border border-white/10 rounded-lg focus:ring-1 focus:ring-accent-cyan focus:border-accent-cyan transition-all px-5 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/50">
+                </div>
+              </div>
+
+              <div class="space-y-3">
+                <label for="contact-subject" class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest font-bold block">Packet_Subject</label>
+                <input id="contact-subject" name="subject" type="text" placeholder="Collaboration / Inquiry"
+                       class="w-full bg-surface-container border border-white/10 rounded-lg focus:ring-1 focus:ring-accent-cyan focus:border-accent-cyan transition-all px-5 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/50">
+              </div>
+
+              <div class="space-y-3">
+                <label for="contact-message" class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest font-bold block">Message_Payload</label>
+                <textarea id="contact-message" name="message" rows="5" placeholder="Enter your query here..." required
+                          class="w-full bg-surface-container border border-white/10 rounded-lg focus:ring-1 focus:ring-accent-cyan focus:border-accent-cyan transition-all px-5 py-4 text-sm text-on-surface placeholder:text-on-surface-variant/50"></textarea>
+              </div>
+
+              <button type="submit"
+                      class="w-full py-4 bg-accent-cyan text-surface rounded-xl font-mono text-sm font-bold hover:brightness-110 transition-all uppercase tracking-widest inline-flex items-center justify-center gap-3">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>
+                </svg>
+                Push_Message
+              </button>
+
+              <p class="font-mono text-[10px] text-on-surface-variant/70 text-center uppercase tracking-widest">
+                Visual interface — opens your email app to send. No data is stored.
+              </p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="w-full py-14 px-6 glass border-t border-white/5">
+    <div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+
+      <div class="text-center md:text-left">
+        <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
+          <span class="w-8 h-8 rounded bg-primary flex items-center justify-center text-white font-display font-bold text-sm" aria-hidden="true">KG</span>
+          <span class="font-display font-bold text-lg">Kelvin Gameli Enam</span>
+        </div>
+        <p class="font-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
+          © <span id="year">2026</span> Lab_Release_v2.1 // Medical Laboratory Science Portfolio
+        </p>
+      </div>
+
+      <nav aria-label="Footer">
+        <ul class="flex flex-wrap justify-center gap-x-10 gap-y-4 font-mono text-[11px] uppercase tracking-widest list-none p-0">
+          <li><a class="text-on-surface-variant hover:text-accent-cyan transition-colors" href="https://www.linkedin.com/in/kelvin-gameli-enam" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a class="text-on-surface-variant hover:text-accent-cyan transition-colors" href="https://github.com/kelvingamelienam" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a class="text-on-surface-variant hover:text-accent-cyan transition-colors" href="#home">Back_To_Top</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
