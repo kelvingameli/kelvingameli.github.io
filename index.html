@@ -371,30 +371,21 @@
      <!-- ============================================================
          RESEARCH (final year project dashboard)
          ============================================================ -->
-        <section id="research" class="py-20 sm:py-section-gap relative" aria-labelledby="research-heading">
+    <section id="research" class="py-20 sm:py-section-gap relative" aria-labelledby="research-heading">
       <div class="max-w-container-max mx-auto px-6">
 
         <!-- Section header + status widget -->
         <div class="flex flex-col items-center text-center mb-16 gap-6">
           <div>
+            <span class="kicker mb-2">02 // Core_Investigation</span>
             <h2 id="research-heading" class="font-display text-4xl sm:text-5xl font-bold">Scientific Inquiry</h2>
           </div>
-          <div class="glass px-6 py-3 rounded-xl border-accent-cyan/20 flex items-center gap-4">
-            <div class="flex flex-col">
-              <span class="font-mono text-[10px] text-on-surface-variant uppercase">Session Uptime</span>
-              <span id="session-uptime" class="font-mono text-xs font-bold text-accent-cyan">00:00:00</span>
-            </div>
-            <div class="w-px h-8 bg-white/10" aria-hidden="true"></div>
-            <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-secondary animate-pulse" aria-hidden="true"></span>
-              <span class="font-mono text-[11px] font-bold text-secondary uppercase">Final Year Project</span>
-            </div>
-          </div>
+
         </div>
 
         <!-- Featured final year project -->
         <article class="glass rounded-[2rem] p-8 md:p-12 mb-8 border-accent-cyan/20 relative overflow-hidden">
-          <div class="absolute top-0 right-0 p-8 font-mono text-[80px] leading-none opacity-5 pointer-events-none select-none" aria-hidden="true">FYP 01</div>
+          <div class="absolute top-0 right-0 p-8 font-mono text-[80px] leading-none opacity-5 pointer-events-none select-none" aria-hidden="true">FYP_01</div>
 
           <div class="relative z-10">
             <span class="inline-block font-mono text-[10px] uppercase tracking-widest text-surface bg-accent-cyan rounded-full px-3 py-1 mb-6 font-bold">
@@ -407,29 +398,19 @@
 
             <div class="grid lg:grid-cols-3 gap-10 lg:gap-12">
               <div class="lg:col-span-2">
-                <!-- Techniques being developed through the project -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-                  <div class="glass p-4 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
-                    <span class="font-mono text-[10px] text-accent-cyan block mb-1">TECHNIQUE 01</span>
-                    <span class="text-sm font-bold">PCR Amplification</span>
-                  </div>
-                  <div class="glass p-4 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
-                    <span class="font-mono text-[10px] text-accent-cyan block mb-1">TECHNIQUE 02</span>
-                    <span class="text-sm font-bold">DNA Extraction</span>
-                  </div>
-                  <div class="glass p-4 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
-                    <span class="font-mono text-[10px] text-accent-cyan block mb-1">TECHNIQUE 03</span>
-                    <span class="text-sm font-bold">Genotyping</span>
-                  </div>
-                  <div class="glass p-4 rounded-xl border-white/5 hover:border-accent-cyan/30 transition-colors">
-                    <span class="font-mono text-[10px] text-accent-cyan block mb-1">TECHNIQUE 04</span>
-                    <span class="text-sm font-bold">Data Analysis</span>
-                  </div>
-                </div>
-
-                <p class="text-on-surface-variant text-base sm:text-lg leading-relaxed max-w-2xl">
-                  My current final year research project investigates how the ACE insertion/deletion (I/D) polymorphism relates to cardiometabolic risk factors, including hypertension and metabolic syndrome within a Ghanaian population, with the aim of informing early risk stratification.
+                <p class="text-on-surface-variant text-base sm:text-lg leading-relaxed max-w-2xl mb-8">
+                  My undergraduate research investigates the relationship between the <strong class="text-on-surface font-bold">ACE insertion/deletion (I/D) polymorphism</strong> and cardiometabolic risk factors among hypertensive and normotensive Ghanaian adults. The study aims to improve understanding of genetic influences on cardiovascular risk and support future strategies for early risk assessment.
                 </p>
+
+                <!-- Laboratory techniques: clean, scannable list -->
+                <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-4">Laboratory Techniques</span>
+                <ul class="space-y-3 text-on-surface-variant text-sm max-w-md">
+                  <li class="flex gap-3"><span class="w-2 h-2 mt-1 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>DNA extraction</li>
+                  <li class="flex gap-3"><span class="w-2 h-2 mt-1 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>PCR amplification</li>
+                  <li class="flex gap-3"><span class="w-2 h-2 mt-1 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>Agarose gel electrophoresis</li>
+                  <li class="flex gap-3"><span class="w-2 h-2 mt-1 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>ACE I/D genotyping</li>
+                  <li class="flex gap-3"><span class="w-2 h-2 mt-1 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>Statistical analysis (SPSS)</li>
+                </ul>
               </div>
 
               <div class="flex flex-col justify-end">
@@ -445,10 +426,10 @@
 
             <!-- Expandable project summary —
                  placeholders grow as the project progresses -->
-                        <div id="research-details" hidden class="mt-10 pt-10 border-t border-white/10">
+            <div id="research-details" hidden class="mt-10 pt-10 border-t border-white/10">
 
               <!-- Project snapshot: question, methods, population, status -->
-              <div class="grid sm:grid-cols-2 gap-8 mb-10">
+              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
                 <div>
                   <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-3">Research Question</span>
                   <p class="text-on-surface-variant text-sm leading-relaxed">
@@ -458,18 +439,8 @@
                 <div>
                   <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-3">Study Population</span>
                   <p class="text-on-surface-variant text-sm leading-relaxed">
-                    Ghanaian adults; both hypertensive and normotensive participants, recruited from the Tamale Teaching Hospital.
+                    Ghanaian adults — hypertensive and normotensive participants, recruited for the final year research project.
                   </p>
-                </div>
-                <div>
-                  <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-3">Methods</span>
-                  <ul class="space-y-3 text-on-surface-variant text-sm">
-                    <li class="flex gap-3"><span class="w-2 h-2 mt-1 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>DNA extraction</li>
-                    <li class="flex gap-3"><span class="w-2 h-2 mt-1 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>PCR amplification</li>
-                    <li class="flex gap-3"><span class="w-2 h-2 mt-1 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>Agarose gel electrophoresis</li>
-                    <li class="flex gap-3"><span class="w-2 h-2 mt-1 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>Genotyping</li>
-                    <li class="flex gap-3"><span class="w-2 h-2 mt-1 rounded-full bg-accent-cyan shrink-0" aria-hidden="true"></span>Statistical analysis (SPSS)</li>
-                  </ul>
                 </div>
                 <div>
                   <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-3">Research Status</span>
@@ -480,73 +451,72 @@
                   <p class="text-on-surface-variant/70 font-mono text-[10px] uppercase tracking-widest mt-4">Final year project — updated as work progresses</p>
                 </div>
               </div>
-
-              <!-- Summary sections — placeholders grow as the project progresses -->
-              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                <div class="glass p-6 rounded-xl border-white/5">
-                  <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-2">Section 01 · In Preparation</span>
-                  <h4 class="font-display text-base font-bold mb-2">Research Background</h4>
-                  <p class="text-on-surface-variant text-sm leading-relaxed">
-                    Literature overview of the ACE I/D polymorphism, the renin–angiotensin system, and reported links to hypertension and cardiometabolic disease. Documentation to be added as the project progresses.
-                  </p>
-                </div>
-
-                <div class="glass p-6 rounded-xl border-white/5">
-                  <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-2">Section 02 · In Preparation</span>
-                  <h4 class="font-display text-base font-bold mb-2">Methodology</h4>
-                  <p class="text-on-surface-variant text-sm leading-relaxed">
-                    Study design, participant sampling, data collection, and statistical analysis plan will be documented here.
-                  </p>
-                </div>
-
-                <div class="glass p-6 rounded-xl border-white/5">
-                  <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-2">Section 03 · In Preparation</span>
-                  <h4 class="font-display text-base font-bold mb-2">Laboratory Techniques</h4>
-                  <p class="text-on-surface-variant text-sm leading-relaxed">
-                    DNA extraction, PCR amplification, gel electrophoresis, and genotyping workflows used in the project.
-                  </p>
-                </div>
-
-                <div class="glass p-6 rounded-xl border-white/5">
-                  <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-2">Section 04 · In Preparation</span>
-                  <h4 class="font-display text-base font-bold mb-2">Findings</h4>
-                  <p class="text-on-surface-variant text-sm leading-relaxed">
-                    Results and interpretation will be published here once laboratory work and analysis are complete.
-                  </p>
-                </div>
-
-                <div class="glass p-6 rounded-xl border-white/5">
-                  <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-2">Section 05 · In Preparation</span>
-                  <h4 class="font-display text-base font-bold mb-2">Presentation / Publication</h4>
-                  <p class="text-on-surface-variant text-sm leading-relaxed">
-                    The final dissertation, poster, and any conference presentations or publications arising from this work will be shared here.
-                  </p>
-                </div>
-
+              <!-- Project roadmap: progress without the placeholders -->
+              <div class="pt-10 border-t border-white/10 max-w-2xl">
+                <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-6">Project Roadmap</span>
+                <ul class="space-y-4 text-sm">
+                  <li class="flex items-center justify-between gap-4">
+                    <span class="flex items-center gap-3">
+                      <svg class="w-4 h-4 text-secondary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                      Literature Review
+                    </span>
+                    <span class="font-mono text-[10px] text-secondary uppercase tracking-widest">Completed</span>
+                  </li>
+                  <li class="flex items-center justify-between gap-4">
+                    <span class="flex items-center gap-3">
+                      <svg class="w-4 h-4 text-secondary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                      Sample Collection
+                    </span>
+                    <span class="font-mono text-[10px] text-secondary uppercase tracking-widest">Completed</span>
+                  </li>
+                  <li class="flex items-center justify-between gap-4">
+                    <span class="flex items-center gap-3">
+                      <svg class="w-4 h-4 text-secondary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                      Laboratory Analysis
+                    </span>
+                    <span class="font-mono text-[10px] text-secondary uppercase tracking-widest">Completed</span>
+                  </li>
+                  <li class="flex items-center justify-between gap-4">
+                    <span class="flex items-center gap-3">
+                      <span class="w-2 h-2 rounded-full bg-accent-cyan animate-pulse shrink-0" aria-hidden="true"></span>
+                      Data Analysis
+                    </span>
+                    <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest">Current</span>
+                  </li>
+                  <li class="flex items-center justify-between gap-4">
+                    <span class="flex items-center gap-3">
+                      <span class="w-2 h-2 rounded-full border border-white/20 shrink-0" aria-hidden="true"></span>
+                      Dissertation
+                    </span>
+                    <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest">Upcoming</span>
+                  </li>
+                  <li class="flex items-center justify-between gap-4">
+                    <span class="flex items-center gap-3">
+                      <span class="w-2 h-2 rounded-full border border-white/20 shrink-0" aria-hidden="true"></span>
+                      Presentation &amp; Publication
+                    </span>
+                    <span class="font-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest">Upcoming</span>
+                  </li>
+                </ul>
               </div>
-
             </div>
           </div>
         </article>
 
         <!-- Related interest areas -->
-        <span class="kicker mb-6 mt-16">Related Interest Areas</span>
+        <span class="kicker mb-6 mt-16">Research_Interests</span>
         <div class="grid md:grid-cols-3 gap-8">
           <article class="module-card glass p-8 rounded-2xl">
-            <span class="font-mono text-[10px] text-accent-cyan mb-4 block">MODULE 01</span>
             <h3 class="font-display text-xl font-bold mb-4">Cardiovascular Genetics</h3>
-            <p class="text-on-surface-variant text-sm leading-relaxed">Exploring the hereditary components of cardiovascular and other non-communicable diseases in Sub-Saharan African populations.</p>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Understanding the genetic basis of cardiovascular disease in African populations.</p>
           </article>
-          <article class="module-card glass p-8 rounded-2xl">
-            <span class="font-mono text-[10px] text-accent-cyan mb-4 block">MODULE 02</span>
+          <article class="module-card glass p-8 rounded-2xl glow-cyan">
             <h3 class="font-display text-xl font-bold mb-4">Precision Medicine</h3>
-            <p class="text-on-surface-variant text-sm leading-relaxed">Interested in how individual genetic and environmental profiles can guide more targeted, effective patient care.</p>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Exploring how genetic variation can inform personalized prevention and treatment.</p>
           </article>
           <article class="module-card glass p-8 rounded-2xl">
-            <span class="font-mono text-[10px] text-accent-cyan mb-4 block">MODULE 03</span>
             <h3 class="font-display text-xl font-bold mb-4">AI in Healthcare</h3>
-            <p class="text-on-surface-variant text-sm leading-relaxed">Curious about how machine learning can support diagnostics, predict outcomes, and improve laboratory workflows.</p>
+            <p class="text-on-surface-variant text-sm leading-relaxed">Applying data science and machine learning to improve clinical decision-making and laboratory medicine.</p>
           </article>
         </div>
 
@@ -556,16 +526,15 @@
             <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>
           </svg>
           <div>
-            <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-2">Research Output</span>
+            <span class="font-mono text-[10px] text-accent-cyan uppercase tracking-widest block mb-2">Research Outputs</span>
             <p class="text-on-surface-variant text-sm leading-relaxed">
-              Developing research experience through my undergraduate final year project. Scientific presentations, posters, abstracts, and publications will be showcased here as the work progresses.
+              This section will be updated with my dissertation, conference presentations, posters, publications, and other scholarly outputs as they become available.
             </p>
           </div>
         </div>
 
       </div>
     </section>
-
 
     <!-- ============================================================
          LABORATORY EXPERIENCE
